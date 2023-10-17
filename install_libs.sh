@@ -104,7 +104,7 @@ sudo ./Configure linux-elf no-comp no-tests no-asm shared --prefix=${PREFIX} --o
 sudo make -j$PARALLEL_JOBS && sudo make install_sw
 
 #pnglib
-REPO=git://git.code.sf.net/p/libpng/code
+REPO=https://github.com/glennrp/libpng
 LOCALREPO=pnglib
 get_clean_repo
 
