@@ -1,4 +1,5 @@
 # kobo-qt-setup-scripts
+This is not my repo, this is a fork with I modded so it would work.
 
 #How to get the repo
 ```
@@ -7,6 +8,11 @@ git clone --recursive https://github.com/ZXMushroom63/kobo-qt-setup-scripts.git
 
 
 A collection of scripts to setup a development environment for cross compiling Qt apps for Kobo Arm targets.
+
+## Some dependencies
+```
+sudo apt-get install cmake
+```
 
 ## Installing the Cross Compiler Toolchain
 
