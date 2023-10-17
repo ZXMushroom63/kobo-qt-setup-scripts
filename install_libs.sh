@@ -14,6 +14,8 @@ PREFIX=${PREFIX:=${SYSROOT}/usr}
 
 PARALLEL_JOBS=$(($(getconf _NPROCESSORS_ONLN 2> /dev/null || sysctl -n hw.ncpu 2> /dev/null || echo 0) + 1))
 
+sudo echo "==="
+
 export AR=${CROSS}-ar
 export AS=${CROSS}-as
 export CC=${CROSS}-gcc
