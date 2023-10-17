@@ -67,7 +67,7 @@ REPO=https://github.com/zlib-ng/zlib-ng
 LOCALREPO=zlib-ng
 get_zlib_ng_repo
 
-./configure --prefix=${PREFIX} --zlib-compat
+sudo ./configure --prefix=${PREFIX} --zlib-compat
 make -j$PARALLEL_JOBS && make install
 
 export CFLAGS=$CFLAGS_LTO
@@ -78,7 +78,7 @@ REPO=https://github.com/BLAKE2/libb2
 LOCALREPO=libb2
 get_clean_repo
 sh autogen.sh --prefix=${PREFIX} --host=${CROSS_TC}
-./configure --prefix=${PREFIX} --host=${CROSS_TC}
+sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC}
 make -j$PARALLEL_JOBS && make install
 
 
@@ -98,7 +98,7 @@ REPO="--single-branch --branch openssl-3.0 https://github.com/openssl/openssl"
 LOCALREPO=openssl-3.0
 get_clean_repo
 
-./Configure linux-elf no-comp no-tests no-asm shared --prefix=${PREFIX} --openssldir=${PREFIX}
+sudo ./Configure linux-elf no-comp no-tests no-asm shared --prefix=${PREFIX} --openssldir=${PREFIX}
 make -j$PARALLEL_JOBS && make install_sw
 
 #pnglib
@@ -106,7 +106,7 @@ REPO=git://git.code.sf.net/p/libpng/code
 LOCALREPO=pnglib
 get_clean_repo
 
-./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-arm-neon=yes
+sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-arm-neon=yes
 make -j$PARALLEL_JOBS && make install
 
 
@@ -128,7 +128,7 @@ get_clean_repo
 
 cd ${LIBDIR}/libs/${LOCALREPO}/expat
 ./buildconf.sh
-./configure --prefix=${PREFIX} --host=${CROSS_TC}
+sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC}
 make -j$PARALLEL_JOBS && make install
 
 #pcre
@@ -137,7 +137,7 @@ LOCALREPO=pcre
 get_clean_repo
 
 ./autogen.sh
-./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-pcre2-16 --enable-jit --with-sysroot=${SYSROOT}
+sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-pcre2-16 --enable-jit --with-sysroot=${SYSROOT}
 make -j$PARALLEL_JOBS && make install
 
 
@@ -147,7 +147,7 @@ LOCALREPO=freetype
 get_clean_repo
 
 sh autogen.sh
-./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-shared=yes --enable-static=yes --without-bzip2 --without-brotli --without-harfbuzz --without-png --disable-freetype-config
+sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-shared=yes --enable-static=yes --without-bzip2 --without-brotli --without-harfbuzz --without-png --disable-freetype-config
 make -j$PARALLEL_JOBS && make install
 
 
@@ -167,5 +167,5 @@ LOCALREPO=freetype
 get_clean_repo
 
 sh autogen.sh 
-./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-shared=yes --enable-static=yes --without-bzip2 --without-brotli --with-harfbuzz --with-png --disable-freetype-config
+sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-shared=yes --enable-static=yes --without-bzip2 --without-brotli --with-harfbuzz --with-png --disable-freetype-config
 make -j$PARALLEL_JOBS && make install
