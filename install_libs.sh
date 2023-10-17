@@ -68,7 +68,7 @@ LOCALREPO=zlib-ng
 get_zlib_ng_repo
 
 sudo ./configure --prefix=${PREFIX} --zlib-compat
-make -j$PARALLEL_JOBS && make install
+sudo make -j$PARALLEL_JOBS && sudo make install
 
 export CFLAGS=$CFLAGS_LTO
 
@@ -79,7 +79,7 @@ LOCALREPO=libb2
 get_clean_repo
 sh autogen.sh --prefix=${PREFIX} --host=${CROSS_TC}
 sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC}
-make -j$PARALLEL_JOBS && make install
+sudo make -j$PARALLEL_JOBS && sudo make install
 
 
 #zstd
@@ -90,7 +90,7 @@ get_clean_repo
 mkdir -p ${LIBDIR}/libs/${LOCALREPO}/build/cmake/build
 cd ${LIBDIR}/libs/${LOCALREPO}/build/cmake/build
 cmake -D ADDITIONAL_CXX_FLAGS="-lrt" -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_TOOLCHAIN_FILE=${LIBDIR}/${CROSS_TC}.cmake -DENABLE_NEON=ON -DNEON_INTRINSICS=ON ..
-make -j$PARALLEL_JOBS && make install
+sudo make -j$PARALLEL_JOBS && sudo make install
 
 
 #openssl
@@ -99,7 +99,7 @@ LOCALREPO=openssl-3.0
 get_clean_repo
 
 sudo ./Configure linux-elf no-comp no-tests no-asm shared --prefix=${PREFIX} --openssldir=${PREFIX}
-make -j$PARALLEL_JOBS && make install_sw
+sudo make -j$PARALLEL_JOBS && sudo make install_sw
 
 #pnglib
 REPO=git://git.code.sf.net/p/libpng/code
@@ -107,7 +107,7 @@ LOCALREPO=pnglib
 get_clean_repo
 
 sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-arm-neon=yes
-make -j$PARALLEL_JOBS && make install
+sudo make -j$PARALLEL_JOBS && sudo make install
 
 
 #libjpeg-turbo
@@ -118,8 +118,8 @@ get_clean_repo
 
 mkdir -p ${LIBDIR}/libs/${LOCALREPO}/build
 cd ${LIBDIR}/libs/${LOCALREPO}/build
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_TOOLCHAIN_FILE=${LIBDIR}/${CROSS_TC}.cmake -DENABLE_NEON=ON -DNEON_INTRINSICS=ON ..
-make -j$PARALLEL_JOBS && make install
+sudo cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_TOOLCHAIN_FILE=${LIBDIR}/${CROSS_TC}.cmake -DENABLE_NEON=ON -DNEON_INTRINSICS=ON ..
+sudo make -j$PARALLEL_JOBS && sudo make install
 
 #expat
 REPO=https://github.com/libexpat/libexpat
@@ -129,7 +129,7 @@ get_clean_repo
 cd ${LIBDIR}/libs/${LOCALREPO}/expat
 ./buildconf.sh
 sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC}
-make -j$PARALLEL_JOBS && make install
+sudo make -j$PARALLEL_JOBS && sudo make install
 
 #pcre
 REPO=https://github.com/rurban/pcre
@@ -138,7 +138,7 @@ get_clean_repo
 
 ./autogen.sh
 sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-pcre2-16 --enable-jit --with-sysroot=${SYSROOT}
-make -j$PARALLEL_JOBS && make install
+sudo make -j$PARALLEL_JOBS && sudo make install
 
 
 #libfreetype without harfbuzz
@@ -148,7 +148,7 @@ get_clean_repo
 
 sh autogen.sh
 sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-shared=yes --enable-static=yes --without-bzip2 --without-brotli --without-harfbuzz --without-png --disable-freetype-config
-make -j$PARALLEL_JOBS && make install
+sudo make -j$PARALLEL_JOBS && sudo make install
 
 
 #harfbuzz
@@ -158,7 +158,7 @@ get_clean_repo
 
 sh autogen.sh --prefix=${PREFIX} --host=${CROSS_TC} --enable-shared=yes --enable-static=yes --without-coretext --without-fontconfig --without-uniscribe --without-cairo --without-glib  --without-gobject --without-graphite2 --without-icu --disable-introspection --with-freetype
 #./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-shared=yes --enable-static=yes --without-coretext --without-fontconfig --without-uniscribe --without-cairo --without-glib  --without-gobject --without-graphite2 --without-icu --disable-introspection --with-freetype
-make -j$PARALLEL_JOBS && make install
+sudo make -j$PARALLEL_JOBS && sudo make install
 
 
 #libfreetype with harfbuzz
@@ -168,4 +168,4 @@ get_clean_repo
 
 sh autogen.sh 
 sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-shared=yes --enable-static=yes --without-bzip2 --without-brotli --with-harfbuzz --with-png --disable-freetype-config
-make -j$PARALLEL_JOBS && make install
+sudo make -j$PARALLEL_JOBS && sudo make install
