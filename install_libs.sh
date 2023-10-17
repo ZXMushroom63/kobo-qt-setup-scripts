@@ -45,6 +45,19 @@ get_clean_repo()
     fi
 }
 
+get_zlib_ng_repo()
+{
+    mkdir -p ${LIBDIR}/libs
+    cd ${LIBDIR}/libs
+    git clone -b "2.1.x" $REPO $LOCALREPO || git -C $LOCALREPO pull
+    cd ${LIBDIR}/libs/${LOCALREPO}
+    git reset --hard
+    git clean -fdx
+    if test -f ${LIBDIR}/patches/${LOCALREPO}.patch; then
+        git apply ${LIBDIR}/patches/${LOCALREPO}.patch
+    fi
+}
+
 # build zlib-ng without LTO
 export CFLAGS=$CFLAGS_OPT1
 
@@ -52,7 +65,7 @@ export CFLAGS=$CFLAGS_OPT1
 #patch: zlib configure line 314: ARCH=armv7-a
 REPO=https://github.com/zlib-ng/zlib-ng
 LOCALREPO=zlib-ng
-get_clean_repo
+get_zlib_ng_repo
 
 ./configure --prefix=${PREFIX} --zlib-compat
 make -j$PARALLEL_JOBS && make install
