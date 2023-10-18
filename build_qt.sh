@@ -19,7 +19,7 @@ PREFIX_DESKTOP=${PREFIX:-/home/${USER}/kobo/qt-bin/${LOCALREPO_DESKTOP}}
 PARALLEL_JOBS=$(($(getconf _NPROCESSORS_ONLN 2> /dev/null || sysctl -n hw.ncpu 2> /dev/null || echo 0) + 1))
 
 #In both configs, -no-harbuzz used to be -system-harbuzz
-#If you really need harfbuzz, try using --qt-harfbuzz, but dont expect it to work.
+#If you really need harfbuzz, try using -qt-harfbuzz, but dont expect it to work.
 
 CONFIG_KOBO="--recheck-all -opensource -confirm-license -release -verbose \
  -prefix /mnt/onboard/.adds/${LOCALREPO_KOBO} \
