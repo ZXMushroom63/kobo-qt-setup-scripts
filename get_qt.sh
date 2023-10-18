@@ -12,7 +12,7 @@ BRANCH=kde/5.15
 
 PATCH_PATH="${SCRIPT_DIR}/patches/qt5.15.patch"
 
-MODULES_BASE="qtbase qtcharts qtdeclarative qtgraphicaleffects qtimageformats qtnetworkauth qtquickcontrols2 qtsvg qtwebsockets qtwebengine qtwebengine-chromium"
+MODULES_BASE="qtbase qtcharts qtdeclarative qtgraphicaleffects qtimageformats qtnetworkauth qtquickcontrols2 qtsvg qtwebsockets qtwebengine"
 MODULES_DESKTOP="qttools qttranslations qtx11extras qtwayland"
 
 platform=kobo
