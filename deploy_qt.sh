@@ -7,7 +7,7 @@ QTVERSIONMAJOR=5
 
 export CROSS_TC=arm-kobo-linux-gnueabihf
 
-export SYSROOT=/home/${USER}/kobo/x-tools/${CROSS_TC}/${CROSS_TC}/sysroot
+export SYSROOT=/home/${USER}/x-tools/${CROSS_TC}/${CROSS_TC}/sysroot
 QTBINPATH=/home/${USER}/kobo/qt-bin/qt-linux-$QTNAME-kobo
 
 OUTPUTNAME=qt-linux-$QTNAME-kobo
