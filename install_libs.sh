@@ -152,6 +152,8 @@ sh autogen.sh
 sudo ./configure --prefix=${PREFIX} --host=${CROSS_TC} --enable-shared=yes --enable-static=yes --without-bzip2 --without-brotli --without-harfbuzz --without-png --disable-freetype-config
 sudo make -j$PARALLEL_JOBS && sudo make install
 
+#Harfbuzz compilation is broken, so I exit here, and modify build_qt to not use harfbuzz.
+exit;
 
 #harfbuzz
 REPO=https://github.com/harfbuzz/harfbuzz
