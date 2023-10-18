@@ -18,13 +18,16 @@ PREFIX_DESKTOP=${PREFIX:-/home/${USER}/kobo/qt-bin/${LOCALREPO_DESKTOP}}
 
 PARALLEL_JOBS=$(($(getconf _NPROCESSORS_ONLN 2> /dev/null || sysctl -n hw.ncpu 2> /dev/null || echo 0) + 1))
 
+#In both configs, -no-harbuzz used to be -system-harbuzz
+#If you really need harfbuzz, try using --qt-harfbuzz, but dont expect it to work.
+
 CONFIG_KOBO="--recheck-all -opensource -confirm-license -release -verbose \
  -prefix /mnt/onboard/.adds/${LOCALREPO_KOBO} \
  -extprefix $PREFIX_KOBO \
  -xplatform ${CROSS_TC}-g++ \
  -sysroot ${SYSROOT} \
  -openssl-linked OPENSSL_PREFIX="${SYSROOT}/usr" \
- -qt-libjpeg -system-zlib -system-libpng -system-freetype -system-harfbuzz -system-pcre -sql-sqlite -linuxfb \
+ -qt-libjpeg -system-zlib -system-libpng -system-freetype -no-harfbuzz -system-pcre -sql-sqlite -linuxfb \
  -no-sse2 -no-xcb -no-xcb-xlib -no-xkbcommon -no-tslib -no-icu -no-iconv -no-dbus -no-fontconfig \
  -nomake tests -nomake examples -no-compile-examples -no-opengl \
  -no-cups -no-pch \
@@ -34,7 +37,7 @@ CONFIG_KOBO="--recheck-all -opensource -confirm-license -release -verbose \
 CONFIG_DESKTOP="--recheck-all -opensource -confirm-license -release -verbose \
  -prefix $PREFIX_DESKTOP  \
  -openssl \
- -system-libjpeg -system-zlib -system-libpng -system-freetype -system-harfbuzz -system-pcre -sql-sqlite -linuxfb \
+ -system-libjpeg -system-zlib -system-libpng -system-freetype -no-harfbuzz -system-pcre -sql-sqlite -linuxfb \
  -no-tslib -no-icu -no-iconv -no-dbus -no-fontconfig \
  -nomake tests -nomake examples -no-compile-examples -no-opengl \
  -no-pch \
